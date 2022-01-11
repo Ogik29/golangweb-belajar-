@@ -23,9 +23,16 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "There's an error", http.StatusInternalServerError)
 		return
 	}
+
+	// passing value to html
+	data := map[string]interface{} {
+		"title": "Belajar Golang Web", 
+		"content": "Bismillah dapat Ganyu menang rate off low pity hehe :v",
+	}
+	// ~~~~~~~~~~~~~~~~~~~~~
     
 	// cara menampilkannya
-	err = tmpl.Execute(w, nil)
+	err = tmpl.Execute(w, data)
 	if err != nil {
 		log.Println(err)
 		http.Error(w, "There's an error", http.StatusInternalServerError)
