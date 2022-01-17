@@ -1,14 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{ .title }}</title>
-  </head>
-  <body>
-    <div class="text">Welcome to home</div>
-    <br /><br />
-    {{ .content }}
-  </body>
-</html>
+{{ template "layout" .}} {{ define "main" }}
+<div class="box-with-shadow">
+  <div class="text">Welcome to home</div>
+  <br />
+  <div class="box-with-shadow">
+    {{ range .}} ID: {{ .ID }} - Product name: {{ .Name }} - Product price: {{ .Price }} - Product stock: {{ .Stock }} - {{ .StockStatus}} <br />
+    {{ end }}
+    <!-- fungsi dari {{ range .}} {{ end }} adalah untuk melakukan perulangan data pada struct -->
+  </div>
+</div>
+{{ end }}

@@ -19,6 +19,15 @@ func main() {
 	mux.HandleFunc("/woi", handler.WoiHandler)
 	mux.HandleFunc("/bacot", handler.BacotHandler)
 	mux.HandleFunc("/product", handler.ProductHandler)
+	mux.HandleFunc("/post-get", handler.PostGet)
+	mux.HandleFunc("/form", handler.Form)
+	mux.HandleFunc("/process", handler.Process)
+
+	// cara load folder assets di golang
+	fileserver := http.FileServer(http.Dir("assets"))
+	mux.Handle("/static/", http.StripPrefix("/static", fileserver))
+	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
     
 	// cara ke 3 (anonymous function)
 	mux.HandleFunc("/profile", func(w http.ResponseWriter, r *http.Request) {
